@@ -1,0 +1,159 @@
+/* styles/phase4-variables.css */
+/* Phase 4: Commitment & Trust Dynamics - Design Tokens */
+
+/*
+ * Add these CSS variables to your existing globals.css or tailwind config.
+ * These extend the Fathom Intelligence dashboard design system.
+ */
+
+:root {
+  /* ============================================
+   * CORE SURFACE COLORS
+   * ============================================ */
+  --surface: #ffffff;
+  --surface-hover: #f8f9fa;
+  --surface-active: #f1f3f4;
+  
+  /* ============================================
+   * TEXT HIERARCHY
+   * ============================================ */
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  
+  /* ============================================
+   * BORDER SYSTEM
+   * ============================================ */
+  --border-subtle: #e5e7eb;
+  --border-hover: #d1d5db;
+  
+  /* ============================================
+   * ACCENT & BRAND
+   * ============================================ */
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  
+  /* ============================================
+   * SIGNAL COLORS (Status & Alerts)
+   * ============================================ */
+  --signal-red: #ef4444;
+  --signal-yellow: #f59e0b;
+  --signal-green: #22c55e;
+  --verified: #10b981;
+  
+  /* ============================================
+   * TEMPERATURE COLORS (Relationship Heat)
+   * ============================================ */
+  --heat: #f97316;        /* Hot/Warming - Orange */
+  --heat-light: #fed7aa;
+  --frost: #0ea5e9;       /* Cold/Cooling - Blue */
+  --frost-light: #bae6fd;
+  
+  /* ============================================
+   * TYPOGRAPHY
+   * ============================================ */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #1a1a1a;
+    --surface-hover: #262626;
+    --surface-active: #333333;
+    
+    --text-primary: #f5f5f5;
+    --text-secondary: #a3a3a3;
+    --text-tertiary: #737373;
+    
+    --border-subtle: #333333;
+    --border-hover: #444444;
+  }
+}
+
+/* Alternative: Explicit dark class for Tailwind */
+.dark {
+  --surface: #1a1a1a;
+  --surface-hover: #262626;
+  --surface-active: #333333;
+  
+  --text-primary: #f5f5f5;
+  --text-secondary: #a3a3a3;
+  --text-tertiary: #737373;
+  
+  --border-subtle: #333333;
+  --border-hover: #444444;
+}
+
+/* ============================================
+ * COMPONENT-SPECIFIC UTILITIES
+ * ============================================ */
+
+/* Commitment completion rate colors */
+.completion-excellent { color: var(--verified); }
+.completion-good { color: var(--signal-yellow); }
+.completion-poor { color: var(--signal-red); }
+
+/* Risk level badges */
+.risk-high { 
+  background-color: rgb(239 68 68 / 0.1); 
+  color: var(--signal-red);
+  border-color: rgb(239 68 68 / 0.2);
+}
+.risk-medium { 
+  background-color: rgb(245 158 11 / 0.1); 
+  color: var(--signal-yellow);
+  border-color: rgb(245 158 11 / 0.2);
+}
+.risk-low { 
+  background-color: rgb(34 197 94 / 0.1); 
+  color: var(--signal-green);
+  border-color: rgb(34 197 94 / 0.2);
+}
+
+/* Temperature momentum indicators */
+.momentum-heating {
+  background-color: rgb(249 115 22 / 0.1);
+  color: var(--heat);
+  border-color: rgb(249 115 22 / 0.2);
+}
+.momentum-cooling {
+  background-color: rgb(14 165 233 / 0.1);
+  color: var(--frost);
+  border-color: rgb(14 165 233 / 0.2);
+}
+.momentum-stable {
+  background-color: var(--surface-hover);
+  color: var(--text-tertiary);
+  border-color: var(--border-subtle);
+}
+
+/* ============================================
+ * ANIMATION KEYFRAMES
+ * ============================================ */
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.2s ease-out;
+}
